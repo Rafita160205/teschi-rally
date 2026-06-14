@@ -1,0 +1,1816 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: white;
+  background:
+    radial-gradient(circle at top right, rgba(0,255,120,0.25), transparent 35%),
+    linear-gradient(135deg, #001b12, #003d24, #007a3d);
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 18px 15px 22px;
+  background: #001f14;
+  border-bottom: 4px solid #00ff88;
+  box-shadow: 0 0 25px rgba(0,255,136,0.7);
+}
+
+.logo-small {
+  width: 115px;
+  background: white;
+  padding: 8px;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+.header h1 {
+  margin-top: 10px;
+  font-size: 2.4rem;
+  text-shadow: 0 0 15px rgba(0,255,136,0.9);
+}
+
+.header p {
+  color: #8dffc8;
+  font-size: 1.1rem;
+}
+
+/* DASHBOARD */
+.dashboard {
+  width: 96%;
+  max-width: 1600px;
+  margin: 22px auto;
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* RANKING */
+.ranking {
+  width: 100%;
+  margin: 0;
+}
+
+.team-card {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px 180px;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+  padding: 16px 22px;
+  min-height: 82px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(0,40,25,0.95), rgba(0,110,60,0.8));
+  border: 2px solid rgba(0,255,136,0.45);
+  box-shadow:
+    0 0 18px rgba(0,255,136,0.35),
+    inset 0 0 25px rgba(0,255,136,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 100%;
+  background: #00ff88;
+  box-shadow: 0 0 18px #00ff88;
+}
+
+.team-card::after {
+  content: "";
+  position: absolute;
+  right: 180px;
+  width: 160px;
+  height: 100%;
+  background:
+    linear-gradient(135deg, transparent 20%, rgba(0,255,136,0.15), transparent 70%);
+}
+
+.position {
+  font-size: 2.7rem;
+  font-weight: 900;
+  color: #00ff88;
+  text-shadow: 0 0 12px rgba(0,255,136,1);
+  z-index: 2;
+}
+
+.team-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  z-index: 2;
+}
+
+.points {
+  text-align: center;
+  background: white;
+  color: #006b35;
+  padding: 12px 18px;
+  border-radius: 35px;
+  font-size: 1.45rem;
+  font-weight: 900;
+  z-index: 2;
+}
+
+.top1::before {
+  background: #ffd700;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+.top2::before {
+  background: #d9d9d9;
+  box-shadow: 0 0 20px white;
+}
+
+.top3::before {
+  background: #ff8c2a;
+  box-shadow: 0 0 20px #ff8c2a;
+}
+
+/* FLECHAS */
+.flecha {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-align: center;
+  z-index: 2;
+}
+
+.flecha.sube {
+  color: #69ff00;
+  text-shadow: 0 0 15px #69ff00;
+  animation: flechaSube 2.5s ease;
+}
+
+.flecha.baja {
+  color: #ff3b3b;
+  text-shadow: 0 0 15px #ff3b3b;
+  animation: flechaBaja 2.5s ease;
+}
+
+.flecha.igual {
+  color: #ffd84d;
+  text-shadow: 0 0 12px #ffd84d;
+}
+
+/* PANEL DERECHO */
+.panel-derecho {
+  position: sticky;
+  top: 15px;
+  border: 2px solid #00ff88;
+  border-radius: 24px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(0,45,28,0.9), rgba(0,18,12,0.95));
+  box-shadow:
+    0 0 28px rgba(0,255,136,0.7),
+    inset 0 0 30px rgba(0,255,136,0.12);
+  text-align: center;
+}
+
+.mascota {
+  width: 310px;
+  max-width: 100%;
+  animation: flotar 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(0,255,136,0.9));
+}
+
+.info-box {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.info-box h3 {
+  color: #00ff88;
+  margin-top: 18px;
+  font-size: 1.15rem;
+  text-shadow: 0 0 12px rgba(0,255,136,0.8);
+}
+
+.info-box p {
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+#hora {
+  font-size: 2.9rem;
+  color: #dfffe8;
+  text-shadow: 0 0 18px #00ff88;
+}
+
+/* RELOJ ABAJO */
+.reloj-inferior {
+  width: 90%;
+  max-width: 760px;
+  margin: 25px auto 35px;
+  padding: 18px;
+  text-align: center;
+  border: 2px solid #00ff88;
+  border-radius: 25px;
+  color: #dfffe8;
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: rgba(0,25,15,0.85);
+  box-shadow: 0 0 35px rgba(0,255,136,0.75);
+  text-shadow: 0 0 20px #00ff88;
+}
+
+/* ANIMACIONES */
+.mover-sube {
+  animation: subirEquipo 2.5s ease;
+}
+
+.mover-baja {
+  animation: bajarEquipo 2.5s ease;
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(1deg);
+  }
+}
+
+@keyframes subirEquipo {
+  0% {
+    transform: translateY(30px);
+  }
+  50% {
+    transform: translateY(-12px);
+    box-shadow: 0 0 35px rgba(105,255,0,0.9);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bajarEquipo {
+  0% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(12px);
+    box-shadow: 0 0 35px rgba(255,59,59,0.9);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes flechaSube {
+  0% {
+    transform: translateY(20px) scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.7);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flechaBaja {
+  0% {
+    transform: translateY(-20px) scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px) scale(1.7);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* INDEX */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  padding: 38px;
+  border-radius: 28px;
+  background: rgba(0, 60, 35, 0.55);
+  border: 2px solid rgba(0,255,136,0.5);
+  box-shadow: 0 0 45px rgba(0,255,136,0.45);
+}
+
+.logo {
+  width: 230px;
+  background: white;
+  padding: 12px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+}
+
+.login-card h1 {
+  font-size: 2.7rem;
+}
+
+.login-card p {
+  margin: 18px 0 30px;
+  color: #dfffe8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 48px;
+  background: white;
+  color: #006b35;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 900;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px 180px;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+  padding: 16px 22px;
+  min-height: 82px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(0,40,25,0.95), rgba(0,110,60,0.8));
+  border: 2px solid rgba(0,255,136,0.45);
+  box-shadow:
+    0 0 18px rgba(0,255,136,0.35),
+    inset 0 0 25px rgba(0,255,136,0.08);
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 1.2s ease,
+    box-shadow 1.2s ease,
+    background 1.2s ease,
+    opacity 1.2s ease;
+}
+
+  .panel-derecho {
+    position: static;
+  }
+}
+
+/* ===== INDEX FUTURISTA TESCHI ===== */
+
+.cyber-home {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(0,255,136,0.18), transparent 35%),
+    radial-gradient(circle at top left, rgba(0,255,136,0.15), transparent 30%),
+    linear-gradient(135deg, #000f09, #002d1b, #000f09);
+}
+
+.cyber-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,255,136,0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0,255,136,0.06) 1px, transparent 1px);
+  background-size: 55px 55px;
+  animation: moverGrid 18s linear infinite;
+  opacity: 0.35;
+}
+
+.cyber-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(0,255,136,0.7) 1px, transparent 2px);
+  background-size: 90px 90px;
+  animation: particulas 7s linear infinite;
+  opacity: 0.35;
+}
+
+.cyber-marco {
+  position: absolute;
+  inset: 35px;
+  border: 2px solid #00ff88;
+  border-radius: 18px;
+  box-shadow:
+    0 0 25px #00ff88,
+    inset 0 0 25px rgba(0,255,136,0.35);
+  clip-path: polygon(
+    4% 0%, 96% 0%, 100% 8%, 100% 92%,
+    96% 100%, 4% 100%, 0% 92%, 0% 8%
+  );
+  animation: brilloMarco 2.8s ease-in-out infinite;
+}
+
+.cyber-card {
+  position: relative;
+  z-index: 5;
+  max-width: 560px;
+  padding: 48px 45px;
+  background:
+    linear-gradient(180deg, rgba(0, 35, 22, 0.92), rgba(0, 15, 9, 0.94));
+  border: 3px solid #00ff88;
+  border-radius: 28px;
+  box-shadow:
+    0 0 35px rgba(0,255,136,0.9),
+    inset 0 0 35px rgba(0,255,136,0.2);
+  overflow: hidden;
+}
+
+.cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(0,255,136,0.65);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.cyber-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+  animation: luzPasando 4s infinite;
+}
+
+.logo-neon {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 22px;
+  margin-bottom: 28px;
+  animation: logoFlotar 2.6s ease-in-out infinite;
+}
+
+.logo-teschi {
+  width: 260px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  filter:
+    drop-shadow(0 0 8px white)
+    drop-shadow(0 0 18px #00ff88);
+}
+
+.cyber-card h1 {
+  font-size: 3.3rem;
+  line-height: 1.12;
+  color: #eafff3;
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 25px rgba(0,255,136,0.95);
+  margin-bottom: 18px;
+}
+
+.cyber-card p {
+  font-size: 1.35rem;
+  color: #b8ffd9;
+  text-shadow: 0 0 12px rgba(0,255,136,0.75);
+  margin-bottom: 38px;
+}
+
+.cyber-btn {
+  position: relative;
+  padding: 17px 70px;
+  border-radius: 8px;
+  background: white;
+  color: #007a3d;
+  font-size: 1.25rem;
+  font-weight: 900;
+  box-shadow:
+    0 0 20px rgba(0,255,136,0.9),
+    inset 0 0 10px rgba(0,255,136,0.35);
+  clip-path: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
+}
+
+.cyber-btn:hover {
+  background: #00ff88;
+  color: #001b12;
+  transform: scale(1.08);
+  box-shadow: 0 0 35px #00ff88;
+}
+
+/* líneas decorativas */
+.cyber-card .logo-neon::before,
+.cyber-card .logo-neon::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 3px;
+  background: #00ff88;
+  top: 32px;
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.cyber-card .logo-neon::before {
+  left: 25px;
+}
+
+.cyber-card .logo-neon::after {
+  right: 25px;
+}
+
+/* ANIMACIONES INDEX */
+@keyframes logoFlotar {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-14px) scale(1.03);
+  }
+}
+
+@keyframes moverGrid {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 55px 55px;
+  }
+}
+
+@keyframes particulas {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 90px 180px;
+  }
+}
+
+@keyframes brilloMarco {
+  0%, 100% {
+    opacity: 0.75;
+    box-shadow: 0 0 18px #00ff88, inset 0 0 20px rgba(0,255,136,0.25);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 40px #00ff88, inset 0 0 35px rgba(0,255,136,0.45);
+  }
+}
+
+@keyframes luzPasando {
+  0% {
+    left: -120%;
+  }
+
+  45%, 100% {
+    left: 140%;
+  }
+}
+
+@media (max-width: 650px) {
+  .cyber-marco {
+    inset: 15px;
+  }
+
+  .cyber-card {
+    max-width: 92%;
+    padding: 35px 22px;
+  }
+
+  .logo-teschi {
+    width: 210px;
+  }
+
+  .cyber-card h1 {
+    font-size: 2.3rem;
+  }
+
+  .cyber-card p {
+    font-size: 1rem;
+  }
+}
+
+/* ===== RESPONSIVE CELULAR Y TABLET ===== */
+
+@media screen and (max-width: 900px) {
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .header {
+    width: 100%;
+    text-align: center;
+    padding: 25px 15px;
+  }
+
+  .logo-small {
+    width: 100px;
+    margin: 0 auto 15px auto;
+    display: block;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .header p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 8px;
+    gap: 20px;
+  }
+
+  .ranking {
+    width: 100%;
+  }
+
+  #tabla-ranking {
+    width: 100%;
+  }
+
+  .team-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60px 1fr 105px;
+    gap: 8px;
+    padding: 14px 10px;
+    margin: 12px auto;
+    min-height: 75px;
+  }
+
+  .team-card::after {
+    display: none;
+  }
+
+  .position {
+    font-size: 2rem;
+  }
+
+  .team-name {
+    font-size: 1rem;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .points {
+    font-size: 0.95rem;
+    padding: 9px 10px;
+  }
+
+  .panel-derecho {
+    width: 100%;
+    position: static;
+    margin: 15px auto;
+    padding: 18px;
+  }
+
+  .mascota {
+    width: 220px;
+    max-width: 100%;
+  }
+
+  .info-box {
+    text-align: center;
+  }
+
+  #hora {
+    font-size: 2rem;
+  }
+
+  .reloj-inferior {
+    width: 92%;
+    font-size: 2rem;
+    margin: 20px auto;
+  }
+}
+
+/* ===== CORRECCIÓN FINAL CELULAR ===== */
+
+@media screen and (max-width: 900px) {
+
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    display: block !important;
+  }
+
+  .header {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 25px 10px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+
+  .header .logo-small {
+    width: 105px !important;
+    height: auto !important;
+    margin: 0 auto 15px auto !important;
+    display: block !important;
+  }
+
+  .header h1 {
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+    margin: 0 auto 8px auto !important;
+  }
+
+  .header p {
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    margin: 0 auto !important;
+  }
+
+  .dashboard {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 12px 8px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .ranking {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  #tabla-ranking {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .team-card {
+    width: 94% !important;
+    max-width: 94% !important;
+    margin: 12px auto !important;
+
+    display: grid !important;
+    grid-template-columns: 55px 1fr 100px !important;
+
+    padding: 14px 10px !important;
+    gap: 8px !important;
+  }
+
+  .team-card::after {
+    display: none !important;
+  }
+
+  .position {
+    font-size: 1.9rem !important;
+  }
+
+  .team-name {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+  }
+
+  .points {
+    font-size: 0.95rem !important;
+    padding: 9px 10px !important;
+  }
+
+  .panel-derecho {
+    width: 94% !important;
+    max-width: 94% !important;
+    margin: 20px auto !important;
+    position: static !important;
+  }
+
+  .mascota {
+    width: 200px !important;
+  }
+
+  .reloj-inferior {
+    width: 94% !important;
+    font-size: 1.8rem !important;
+  }
+}
+
+.aviso-evento {
+  margin: 25px auto;
+  padding: 18px;
+  border: 2px solid #00ff88;
+  border-radius: 18px;
+  background: rgba(0, 255, 136, 0.08);
+  box-shadow: 0 0 20px rgba(0,255,136,0.4);
+}
+
+.aviso-evento h3 {
+  color: #ffe96b;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.aviso-evento p {
+  margin: 5px 0;
+}
+
+#contador {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.4rem;
+  color: #00ff88;
+  text-shadow: 0 0 12px #00ff88;
+}
+
+.mascota-triste {
+  width: 230px;
+  max-width: 100%;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 22px rgba(0,255,136,0.7));
+  animation: tristeza 2.5s ease-in-out infinite;
+}
+
+@keyframes tristeza {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* ===================================================== */
+/* ================== CARD PRINCIPAL =================== */
+/* ===================================================== */
+
+.login-card,
+.cyber-card{
+
+    padding: 45px 35px;
+
+    gap: 18px;
+
+    border-radius: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ===================================================== */
+/* ====================== TITULO ======================= */
+/* ===================================================== */
+
+h1{
+
+    font-size: 4rem;
+
+    line-height: 1.1;
+
+    margin-bottom: 12px;
+
+    text-align: center;
+
+    color: white;
+
+    text-shadow:
+    0 0 10px #00ff88,
+    0 0 25px #00ff88,
+    0 0 40px #00ff88;
+}
+
+
+/* ===================================================== */
+/* ==================== SUBTITULO ====================== */
+/* ===================================================== */
+
+.login-card p{
+
+    font-size: 1.2rem;
+
+    margin-top: 8px;
+
+    margin-bottom: 25px;
+
+    opacity: .9;
+
+    text-align: center;
+
+    color: #d9fff0;
+}
+
+
+/* ===================================================== */
+/* ==================== AVISO EVENTO =================== */
+/* ===================================================== */
+
+.aviso-evento{
+
+    width: 85%;
+
+    margin: 25px auto;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    border: 2px solid #00ff88;
+
+    background: rgba(0,255,136,.05);
+
+    box-shadow:
+    0 0 25px rgba(0,255,136,.25),
+    inset 0 0 25px rgba(0,255,136,.08);
+
+    backdrop-filter: blur(6px);
+
+    text-align: center;
+}
+
+
+/* ===================================================== */
+/* ================= TEXTO AVISO ======================= */
+/* ===================================================== */
+
+.aviso-evento h3{
+
+    font-size: 1.4rem;
+
+    line-height: 1.5;
+
+    color: #ffe96b;
+
+    margin-bottom: 15px;
+}
+
+.aviso-evento p{
+
+    font-size: 1.8rem;
+
+    margin-bottom: 10px;
+
+    color: white;
+}
+
+
+/* ===================================================== */
+/* ==================== CONTADOR ======================= */
+/* ===================================================== */
+
+#contador{
+
+    display: block;
+
+    font-size: 2.2rem;
+
+    font-weight: bold;
+
+    color: #00ff88;
+
+    margin-top: 15px;
+
+    text-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88;
+}
+
+
+/* ===================================================== */
+/* ==================== MASCOTA ======================== */
+/* ===================================================== */
+
+.mascota-triste{
+
+    width: 220px;
+
+    max-width: 100%;
+
+    margin-bottom: 20px;
+
+    filter: drop-shadow(0 0 25px rgba(0,255,136,.6));
+
+    animation: floatMascota 3s ease-in-out infinite;
+}
+
+
+/* ===================================================== */
+/* =================== ANIMACION ======================= */
+/* ===================================================== */
+
+@keyframes floatMascota{
+
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(10px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+
+/* ===================================================== */
+/* ==================== RESPONSIVE ===================== */
+/* ===================================================== */
+
+@media screen and (max-width: 900px){
+
+    .login-card,
+    .cyber-card{
+
+        width: 92%;
+
+        padding: 35px 20px;
+    }
+
+    h1{
+
+        font-size: 2.8rem;
+    }
+
+    .login-card p{
+
+        font-size: 1rem;
+    }
+
+    .aviso-evento{
+
+        width: 95%;
+
+        padding: 20px;
+    }
+
+    .aviso-evento h3{
+
+        font-size: 1.1rem;
+    }
+
+    .aviso-evento p{
+
+        font-size: 1.2rem;
+    }
+
+    #contador{
+
+        font-size: 1.5rem;
+    }
+
+    .mascota-triste{
+
+        width: 170px;
+    }
+}
+
+/* ===== ACTIVAR SCROLL EN PÁGINAS DE AVISO ===== */
+
+html,
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.cyber-home {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.cyber-card {
+    max-height: none;
+    height: auto;
+    margin: 40px auto;
+}
+
+.pantalla-listos h1 {
+    font-size: 4.5rem;
+    color: #00ff88;
+    animation: pulsoTexto 1s infinite alternate;
+}
+
+.mascota-lista {
+    width: 260px;
+    max-width: 100%;
+    filter: drop-shadow(0 0 25px #00ff88);
+    animation: saltoMascota 1.2s ease-in-out infinite;
+}
+
+.contador-final {
+    margin-top: 25px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    text-shadow:
+        0 0 15px #00ff88,
+        0 0 35px #00ff88;
+}
+
+@keyframes pulsoTexto {
+    from {
+        transform: scale(1);
+        text-shadow: 0 0 15px #00ff88;
+    }
+
+    to {
+        transform: scale(1.08);
+        text-shadow: 0 0 40px #00ff88;
+    }
+}
+
+@keyframes saltoMascota {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+}
+
+/* ===== PREMIACION ===== */
+
+.mascota-premiacion{
+    width: 320px;
+    max-width: 90%;
+    display: block;
+    margin: auto;
+    filter: drop-shadow(0 0 25px #00ff99);
+}
+
+.sub-premiacion{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.estado-box{
+    margin-top: 30px;
+}
+
+.estado-box h2{
+    color: #ffe66d;
+    font-size: 2rem;
+    text-shadow: 0 0 15px #ffe66d;
+    animation: parpadeo 2s infinite;
+}
+
+.barra-contenedor{
+    width: 80%;
+    height: 22px;
+    border: 2px solid #00ff99;
+    border-radius: 20px;
+    margin: 35px auto;
+    overflow: hidden;
+    box-shadow: 0 0 20px #00ff99;
+}
+
+.barra-carga{
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #00ff99,
+        #00ffaa,
+        #00ffcc
+    );
+
+    animation: carga 30s linear forwards;
+}
+
+@keyframes carga{
+
+    from{
+        width: 0%;
+    }
+
+    to{
+        width: 100%;
+    }
+}
+
+.contador-premiacion{
+    margin-top: 30px;
+}
+
+.contador-premiacion p{
+    font-size: 1.5rem;
+}
+
+.contador-premiacion strong{
+    font-size: 4rem;
+    color: #00ff99;
+    text-shadow: 0 0 25px #00ff99;
+}
+
+
+/* ===== NUEVO TOP 5 ===== */
+
+.top5-final{
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.top-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 25px;
+
+    border-radius: 20px;
+
+    background: rgba(0,255,136,.08);
+
+    border: 2px solid #00ff88;
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    font-weight: bold;
+
+    box-shadow: 0 0 20px rgba(0,255,136,.3);
+}
+
+.puesto-1{
+    border-color: gold;
+    box-shadow: 0 0 30px gold;
+}
+
+.puesto-2{
+    border-color: silver;
+    box-shadow: 0 0 25px silver;
+}
+
+.puesto-3{
+    border-color: #cd7f32;
+    box-shadow: 0 0 25px #cd7f32;
+}
+
+.lugar{
+    width: 70px;
+    font-size: 1.8rem;
+}
+
+.nombre-equipo{
+    flex: 1;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.puntos-equipo{
+    background: white;
+    color: #006b35;
+    padding: 10px 18px;
+    border-radius: 20px;
+}
+
+@media(max-width:900px){
+
+    .top-item{
+        flex-direction: column;
+        gap: 10px;
+        text-align:center;
+    }
+
+    .nombre-equipo{
+        padding-left:0;
+    }
+}
+
+/* ===== TOP 5 FINAL PRO ===== */
+
+.top5-final {
+    width: 92% !important;
+    margin: 35px auto 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+.top-item {
+    display: grid !important;
+    grid-template-columns: 90px 1fr 140px !important;
+    align-items: center !important;
+    padding: 18px 22px !important;
+    border-radius: 22px !important;
+    background: linear-gradient(90deg, rgba(0,35,22,.95), rgba(0,95,55,.8)) !important;
+    border: 2px solid #00ff88 !important;
+    color: white !important;
+    font-weight: 900 !important;
+    box-shadow: 0 0 22px rgba(0,255,136,.45) !important;
+    animation: aparecerTop .8s ease both !important;
+}
+
+.top-item .lugar {
+    font-size: 2rem !important;
+    color: #00ff88 !important;
+}
+
+.top-item .nombre-equipo {
+    font-size: 1.35rem !important;
+    text-align: left !important;
+}
+
+.top-item .puntos-equipo {
+    background: white !important;
+    color: #006b35 !important;
+    padding: 10px 14px !important;
+    border-radius: 25px !important;
+    text-align: center !important;
+    font-size: 1.15rem !important;
+}
+
+/* ORO */
+.puesto-1 {
+    border-color: gold !important;
+    box-shadow: 0 0 35px gold !important;
+    animation: ganadorCentro 2.5s ease both !important;
+}
+
+.puesto-1 .lugar {
+    color: gold !important;
+}
+
+/* PLATA */
+.puesto-2 {
+    border-color: silver !important;
+    box-shadow: 0 0 30px silver !important;
+    animation: brilloPlata 1.8s infinite alternate !important;
+}
+
+.puesto-2 .lugar {
+    color: silver !important;
+}
+
+/* BRONCE */
+.puesto-3 {
+    border-color: #cd7f32 !important;
+    box-shadow: 0 0 30px #cd7f32 !important;
+    animation: brilloBronce 1.8s infinite alternate !important;
+}
+
+.puesto-3 .lugar {
+    color: #cd7f32 !important;
+}
+
+/* 4 Y 5 */
+.puesto-4,
+.puesto-5 {
+    border-color: #00ff88 !important;
+}
+
+@keyframes aparecerTop {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ganadorCentro {
+    0% {
+        opacity: 0;
+        transform: scale(1.6) translateY(-120px);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(1.25) translateY(-20px);
+        box-shadow: 0 0 60px gold;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes brilloPlata {
+    from {
+        box-shadow: 0 0 15px silver;
+    }
+
+    to {
+        box-shadow: 0 0 40px silver;
+    }
+}
+
+@keyframes brilloBronce {
+    from {
+        box-shadow: 0 0 15px #cd7f32;
+    }
+
+    to {
+        box-shadow: 0 0 40px #cd7f32;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .top-item {
+        grid-template-columns: 60px 1fr !important;
+        gap: 8px !important;
+    }
+
+    .top-item .puntos-equipo {
+        grid-column: 2 !important;
+        width: fit-content !important;
+    }
+
+    .top-item .nombre-equipo {
+        font-size: 1rem !important;
+    }
+}
+
+/* ===== INICIO CON MASCOTA ===== */
+
+.inicio-layout{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.inicio-contenido{
+    flex:1;
+    min-width:350px;
+}
+
+.panel-mascota{
+    width:380px;
+    text-align:center;
+    animation: flotarMascota 4s ease-in-out infinite;
+}
+
+.mascota-pensando{
+    width:100%;
+    max-width:350px;
+    filter: drop-shadow(0 0 20px #00ff88);
+}
+
+.mensaje-mascota{
+    margin-top:15px;
+    padding:15px;
+    border-radius:15px;
+    border:2px solid #00ff88;
+    background:rgba(0,255,136,.08);
+}
+
+.mensaje-mascota h3{
+    color:#00ff88;
+    margin-bottom:10px;
+}
+
+.mensaje-mascota p{
+    color:white;
+}
+
+@keyframes flotarMascota{
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:900px){
+
+    .inicio-layout{
+        flex-direction:column;
+    }
+
+    .panel-mascota{
+        width:280px;
+    }
+}
+
+/* ===== BOTON EQUIPOS ===== */
+
+.equipos-btn{
+    margin-top: 15px;
+    background: transparent;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 18px rgba(0,255,136,.7);
+}
+
+.equipos-btn:hover{
+    background: #00ff88;
+    color: #001b12;
+}
+
+/* ===== EQUIPOS REGISTRADOS PRO FINAL ===== */
+
+.equipos-card {
+    max-width: 1100px !important;
+    width: 95% !important;
+    padding: 35px !important;
+}
+
+.equipos-card h1 {
+    font-size: 4rem !important;
+    margin-bottom: 15px !important;
+}
+
+.contador-equipos {
+    display: inline-block !important;
+    font-size: 3rem !important;
+    padding: 12px 38px !important;
+    border-radius: 25px !important;
+    color: #00ff88 !important;
+    border: 2px solid #00ff88 !important;
+    box-shadow: 0 0 28px #00ff88 !important;
+    background: rgba(0,255,136,.10) !important;
+}
+
+.equipos-layout {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 220px 1fr 220px !important;
+    gap: 18px !important;
+    align-items: center !important;
+    margin: 25px auto !important;
+}
+
+.img-vs {
+    width: 100% !important;
+    max-width: 210px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 18px #00ff88) !important;
+}
+
+.tabla-equipos {
+    width: 100% !important;
+    max-height: 430px !important;
+    overflow-y: auto !important;
+    padding: 14px !important;
+    border: 2px solid #00ff88 !important;
+    border-radius: 22px !important;
+    background: rgba(0, 25, 15, .88) !important;
+    box-shadow: 0 0 30px rgba(0,255,136,.7),
+                inset 0 0 25px rgba(0,255,136,.18) !important;
+}
+
+.tabla-head,
+.fila-equipo {
+    display: grid !important;
+    grid-template-columns: 80px 1fr !important;
+    align-items: center !important;
+}
+
+.tabla-head {
+    padding: 14px !important;
+    margin-bottom: 12px !important;
+    border-radius: 16px !important;
+    background: rgba(0,255,136,.18) !important;
+    color: #00ff88 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 12px #00ff88 !important;
+}
+
+.fila-equipo {
+    margin-bottom: 10px !important;
+    padding: 14px 16px !important;
+    border-radius: 18px !important;
+    border: 2px solid rgba(0,255,136,.75) !important;
+    background: linear-gradient(90deg, rgba(0,40,25,.95), rgba(0,110,60,.75)) !important;
+    box-shadow: 0 0 18px rgba(0,255,136,.4) !important;
+}
+
+.num-equipo {
+    color: #00ff88 !important;
+    font-size: 1.35rem !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 14px #00ff88 !important;
+}
+
+.nombre-equipo-lista {
+    color: white !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    text-align: left !important;
+}
+
+@media screen and (max-width: 900px) {
+    .equipos-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .img-vs {
+        max-width: 250px !important;
+        margin: auto !important;
+    }
+}
+
+/* ===== CORRECCIÓN GANADORES CELULAR ===== */
+
+@media screen and (max-width: 900px) {
+
+  .cyber-card {
+    width: 94% !important;
+    max-width: 94% !important;
+    padding: 25px 12px !important;
+    margin: 25px auto !important;
+    overflow: hidden !important;
+  }
+
+  .cyber-card h1 {
+    font-size: 2.6rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .mascota-premiacion,
+  .imagen-ganadores,
+  .podio-img,
+  .podio {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 15px auto !important;
+  }
+
+  .top5-final {
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .top-item {
+    width: 96% !important;
+    margin: 0 auto !important;
+    grid-template-columns: 55px 1fr !important;
+    padding: 14px 12px !important;
+  }
+
+  .top-item .lugar {
+    font-size: 1.7rem !important;
+  }
+
+  .top-item .nombre-equipo {
+    font-size: 1rem !important;
+    padding-left: 5px !important;
+  }
+
+  .top-item .puntos-equipo {
+    grid-column: 1 / 3 !important;
+    justify-self: center !important;
+    font-size: .95rem !important;
+    padding: 8px 14px !important;
+  }
+}
+
+/* ===== PARCHE EN VIVO: RANKING Y GANADORES ===== */
+.dashboard{
+    align-items: start !important;
+}
+
+.ranking{
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+#tabla-ranking{
+    width: 100% !important;
+}
+
+.team-name,
+.nombre-equipo{
+    min-width: 0 !important;
+    word-break: break-word !important;
+}
+
+.top5-final{
+    width: 92% !important;
+}
+
+@media screen and (min-width: 901px){
+    .dashboard{
+        grid-template-columns: minmax(0, 1fr) 390px !important;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .dashboard{
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 12px 8px !important;
+        margin: 0 auto !important;
+    }
+
+    .ranking,
+    #tabla-ranking,
+    .top5-final{
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .team-card{
+        width: 94% !important;
+        max-width: 94% !important;
+        grid-template-columns: 55px minmax(0, 1fr) 100px !important;
+        margin: 12px auto !important;
+    }
+
+    .top-item{
+        width: 100% !important;
+        grid-template-columns: 60px minmax(0, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .top-item .puntos-equipo{
+        grid-column: 2 !important;
+        justify-self: start !important;
+        width: auto !important;
+    }
+
+    .panel-derecho{
+        width: 94% !important;
+        max-width: 94% !important;
+        position: static !important;
+        margin: 20px auto !important;
+    }
+}
+
