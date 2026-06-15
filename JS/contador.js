@@ -1,4 +1,4 @@
-const fechaEvento = new Date("2026-06-14T23:18:00").getTime();
+const fechaEvento = new Date("2026-06-14T23:48:00").getTime();
 
 function actualizarContador() {
 
