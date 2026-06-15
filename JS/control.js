@@ -1,5 +1,4 @@
 const CSV_CONTROL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6GUlXru3oyt27rCOO7gw-fvL_vbpdYgDZ5Zj2cfD0wYNlGp8gEQx5uYTIOUlfa3vbMfqk43uW4_AA/pub?gid=481839722&single=true&output=csv";
-
 const rutasControl = {
     inicio: "index.html",
     pendiente: "pendiente.html",
