@@ -1,4 +1,4 @@
-const CSV_CONTROL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6GUlXru3oyt27rCOO7gw-fvL_vbpdYgDZ5Zj2cfD0wYNlGp8gEQx5uYTIOUlfa3vbMfqk43uW4_AA/pub?gid=481839722&single=true&output=csv";
+const CSV_CONTROL = "https://docs.google.com/spreadsheets/d/1f77TuaTJJ1MX5malojxt8bfJ5l5unbzXXGNAvyQExoM/gviz/tq?tqx=out:csv&gid=481839722";
 
 const rutasControl = {
     inicio: "/",
@@ -11,47 +11,45 @@ const rutasControl = {
     ganadores: "/ganadores.html"
 };
 
-function csvToRowsControl(csv) {
-    return csv.trim().split(/\r?\n/).map(row => row.split(","));
-}
-
-function normalizarRuta(ruta) {
-    if (ruta === "" || ruta === "/") return "/";
-    if (ruta === "/ganadores") return "/ganadores.html";
-    if (ruta === "/ranking") return "/ranking.html";
-    if (ruta === "/premiacion") return "/premiacion.html";
-    if (ruta === "/equipos") return "/equipos.html";
-    if (ruta === "/listo") return "/listo.html";
-    if (ruta === "/pendiente") return "/pendiente.html";
-    return ruta;
+function limpiar(valor) {
+    return String(valor || "")
+        .replace(/"/g, "")
+        .trim()
+        .toLowerCase();
 }
 
 function revisarControlGlobal() {
-    fetch(CSV_CONTROL + "&nocache=" + Date.now(), {
-        cache: "no-store"
-    })
-    .then(res => res.text())
-    .then(csv => {
-        const filas = csvToRowsControl(csv);
-        const modo = (filas[1]?.[0] || "").trim().toLowerCase();
+    fetch(CSV_CONTROL + "&nocache=" + Date.now(), { cache: "no-store" })
+        .then(res => res.text())
+        .then(csv => {
+            const lineas = csv.trim().split(/\r?\n/);
+            if (lineas.length < 2) return;
 
-        if (modo === "auto" || modo === "normal" || modo === "ninguno" || modo === "") {
-            return;
-        }
+            const columnas = lineas[1].split(",");
+            const modo = limpiar(columnas[0]);
 
-        const destino = rutasControl[modo];
-        if (!destino) return;
+            if (modo === "" || modo === "auto" || modo === "normal" || modo === "ninguno") {
+                return;
+            }
 
-        const actual = normalizarRuta(location.pathname);
+            const destino = rutasControl[modo];
+            if (!destino) return;
 
-        if (actual !== destino) {
-            window.location.replace(destino);
-        }
-    })
-    .catch(error => {
-        console.log("Error control global:", error);
-    });
+            let actual = location.pathname;
+
+            if (actual === "/ranking") actual = "/ranking.html";
+            if (actual === "/ganadores") actual = "/ganadores.html";
+            if (actual === "/premiacion") actual = "/premiacion.html";
+            if (actual === "/equipos") actual = "/equipos.html";
+            if (actual === "/listo") actual = "/listo.html";
+            if (actual === "/pendiente") actual = "/pendiente.html";
+
+            if (actual !== destino) {
+                window.location.replace(destino);
+            }
+        })
+        .catch(error => console.log("Error control global:", error));
 }
 
 revisarControlGlobal();
-setInterval(revisarControlGlobal, 3000);
+setInterval(revisarControlGlobal, 2000);
