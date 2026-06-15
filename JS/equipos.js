@@ -15,17 +15,17 @@ function cargarEquipos() {
             const usados = [];
 
             filas.forEach(fila => {
-                const nombre = (fila[1] || "").trim();
+            const nombre = (fila[0] || "").replace(/"/g, "").trim();
 
-                if (nombre === "") return;
+            if (nombre === "") return;
 
-                const clave = nombre.toLowerCase();
+            const clave = nombre.toLowerCase();
 
-                if (!usados.includes(clave)) {
-                    usados.push(clave);
-                    equipos.push(nombre);
-                }
-            });
+            if (!usados.includes(clave)) {
+                usados.push(clave);
+                equipos.push(nombre);
+            }
+        });
 
             const total = document.getElementById("totalEquipos");
             const lista = document.getElementById("listaEquipos");
