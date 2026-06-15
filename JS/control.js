@@ -24,14 +24,20 @@ function revisarControlGlobal() {
     .then(res => res.text())
     .then(csv => {
         const filas = csvToRowsControl(csv);
-
         const modo = (filas[1]?.[0] || "").trim().toLowerCase();
 
-        if (!modo || !rutasControl[modo]) return;
+        // MODO AUTO: no fuerza ninguna página, deja que el rally siga normal
+        if (modo === "auto" || modo === "normal" || modo === "ninguno" || modo === "") {
+            return;
+        }
+
+        // Si el modo no existe, no hace nada
+        if (!rutasControl[modo]) return;
 
         const paginaActual = location.pathname.split("/").pop() || "index.html";
         const destino = rutasControl[modo];
 
+        // Solo redirige si estás en una página diferente
         if (paginaActual !== destino) {
             window.location.href = destino + "?v=" + Date.now();
         }
