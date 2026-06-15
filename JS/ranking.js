@@ -61,7 +61,7 @@ function cargarRanking() {
 
         equipos.sort((a, b) => b.puntos - a.puntos);
 
-        const rankingActual = JSON.stringify(equipos);
+       const rankingActual = JSON.stringify(equipos);
 
         if (rankingActual === ultimoRanking) {
             return;
