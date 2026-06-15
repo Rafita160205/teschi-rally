@@ -16,26 +16,40 @@ function csvToRowsControl(csv) {
 }
 
 function revisarControlGlobal() {
-    fetch(CSV_CONTROL + "&nocache=" + Date.now(), { cache: "no-store" })
-        .then(res => res.text())
-        .then(csv => {
-            const filas = csvToRowsControl(csv);
-            const modo = (filas[1]?.[0] || "").trim().toLowerCase();
 
-            if (modo === "auto" || modo === "normal" || modo === "ninguno" || modo === "") {
-                return;
-            }
+    fetch(CSV_CONTROL, {
+        cache: "no-store"
+    })
+    .then(res => res.text())
+    .then(csv => {
 
-            const destino = rutasControl[modo];
-            if (!destino) return;
+        const filas = csvToRowsControl(csv);
 
-            const actual = location.pathname;
+        const modo = (filas[1]?.[0] || "").trim().toLowerCase();
 
-            if (actual !== destino) {
-                window.location.href = destino + "?v=" + Date.now();
-            }
-        })
-        .catch(error => console.log("Error en control global:", error));
+        if (!modo) return;
+
+        const destino = rutasControl[modo];
+
+        if (!destino) return;
+
+        let actual = location.pathname;
+
+        if (actual === "/ganadores") actual = "/ganadores.html";
+        if (actual === "/ranking") actual = "/ranking.html";
+        if (actual === "/premiacion") actual = "/premiacion.html";
+        if (actual === "/equipos") actual = "/equipos.html";
+        if (actual === "/listo") actual = "/listo.html";
+        if (actual === "/pendiente") actual = "/pendiente.html";
+
+        if (actual !== destino) {
+            window.location.href = destino;
+        }
+
+    })
+    .catch(error => {
+        console.log("Error control global:", error);
+    });
 }
 
 revisarControlGlobal();
