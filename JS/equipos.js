@@ -1,5 +1,4 @@
-const CSV_EQUIPOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6GUlXru3oyt27rCOO7gw-fvL_vbpdYgDZ5Zj2cfD0wYNlGp8gEQx5uYTIOUlfa3vbMfqk43uW4_AA/pub?output=csv";
-
+const CSV_EQUIPOS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6GUlXru3oyt27rCOO7gw-fvL_vbpdYgDZ5Zj2cfD0wYNlGp8gEQx5uYTIOUlfa3vbMfqk43uW4_AA/pub?gid=0&single=true&output=csv";
 function csvToRows(csv) {
     return csv.trim().split(/\r?\n/).map(row => row.split(","));
 }
