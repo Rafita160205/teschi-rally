@@ -18,6 +18,17 @@ function limpiar(valor) {
         .toLowerCase();
 }
 
+function normalizarRuta(ruta) {
+    if (ruta === "" || ruta === "/") return "/";
+    if (ruta === "/ranking") return "/ranking.html";
+    if (ruta === "/ganadores") return "/ganadores.html";
+    if (ruta === "/premiacion") return "/premiacion.html";
+    if (ruta === "/equipos") return "/equipos.html";
+    if (ruta === "/listo") return "/listo.html";
+    if (ruta === "/pendiente") return "/pendiente.html";
+    return ruta;
+}
+
 function revisarControlGlobal() {
     fetch(CSV_CONTROL + "&nocache=" + Date.now(), { cache: "no-store" })
         .then(res => res.text())
@@ -29,20 +40,16 @@ function revisarControlGlobal() {
             const modo = limpiar(columnas[0]);
 
             if (modo === "" || modo === "auto" || modo === "normal" || modo === "ninguno") {
+                localStorage.removeItem("modoControlRally");
                 return;
             }
 
             const destino = rutasControl[modo];
             if (!destino) return;
 
-            let actual = location.pathname;
+            localStorage.setItem("modoControlRally", modo);
 
-            if (actual === "/ranking") actual = "/ranking.html";
-            if (actual === "/ganadores") actual = "/ganadores.html";
-            if (actual === "/premiacion") actual = "/premiacion.html";
-            if (actual === "/equipos") actual = "/equipos.html";
-            if (actual === "/listo") actual = "/listo.html";
-            if (actual === "/pendiente") actual = "/pendiente.html";
+            const actual = normalizarRuta(location.pathname);
 
             if (actual !== destino) {
                 window.location.replace(destino);

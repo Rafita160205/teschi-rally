@@ -162,10 +162,16 @@ setInterval(actualizarFechaHora, 1000);
 const fechaFinal = new Date("2026-06-14T18:20:00").getTime();
 
 function revisarFinalEvento() {
+    // Si el control manual está forzando ranking,
+    // NO mandar a premiación.
+    if (localStorage.getItem("modoControlRally") === "ranking") {
+        return;
+    }
+
     const ahora = new Date().getTime();
 
     if (ahora >= fechaFinal) {
-        window.location.href = "premiacion.html?v=" + Date.now();
+        window.location.href = "premiacion.html";
     }
 }
 

@@ -1,7 +1,12 @@
 const fechaEvento = new Date("2026-06-14T18:10:00").getTime();
 
-
 function actualizarContadorPendiente() {
+
+    // Si Control fuerza pendiente, no cambiar automáticamente
+    if (localStorage.getItem("modoControlRally") === "pendiente") {
+        return;
+    }
+
     const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
     const contador = document.getElementById("contadorPendiente");
@@ -9,12 +14,12 @@ function actualizarContadorPendiente() {
     if (!contador) return;
 
     if (diferencia <= 60000 && diferencia > 0) {
-        window.location.href = "listo.html?v=" + Date.now();
+        window.location.href = "listo.html";
         return;
     }
 
     if (diferencia <= 0) {
-        window.location.href = "ranking.html?v=" + Date.now();
+        window.location.href = "ranking.html";
         return;
     }
 

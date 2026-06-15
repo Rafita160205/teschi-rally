@@ -1,7 +1,13 @@
 const fechaEvento = new Date("2026-06-14T18:10:00").getTime();
 
-
 function cuentaFinal() {
+
+    // Si Control fuerza "listo",
+    // no pasar automáticamente a ranking
+    if (localStorage.getItem("modoControlRally") === "listo") {
+        return;
+    }
+
     const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
     const contador = document.getElementById("contadorFinal");
@@ -9,7 +15,7 @@ function cuentaFinal() {
     if (!contador) return;
 
     if (diferencia <= 0) {
-        window.location.href = "ranking.html?v=" + Date.now();
+        window.location.href = "ranking.html";
         return;
     }
 

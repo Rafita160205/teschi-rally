@@ -1,16 +1,23 @@
 const fechaEvento = new Date("2026-06-14T18:10:00").getTime();
 
 function revisarTiempoEquipos() {
+
+    // Si Control está forzando equipos,
+    // no cambiar automáticamente
+    if (localStorage.getItem("modoControlRally") === "equipos") {
+        return;
+    }
+
     const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
 
     if (diferencia <= 60000 && diferencia > 0) {
-        window.location.href = "listo.html?v=" + Date.now();
+        window.location.href = "listo.html";
         return;
     }
 
     if (diferencia <= 0) {
-        window.location.href = "ranking.html?v=" + Date.now();
+        window.location.href = "ranking.html";
         return;
     }
 }
