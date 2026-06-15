@@ -160,7 +160,7 @@ actualizarFechaHora();
 setInterval(actualizarFechaHora, 1000);
 
 // FINAL DEL RANKING
-const fechaFinal = new Date("2026-06-14T16:25:00").getTime();
+const fechaFinal = new Date("2026-06-14T18:20:00").getTime();
 
 function revisarFinalEvento() {
     const ahora = new Date().getTime();
