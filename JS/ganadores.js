@@ -1,6 +1,26 @@
 const CSV_RANKING = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR6GUlXru3oyt27rCOO7gw-fvL_vbpdYgDZ5Zj2cfD0wYNlGp8gEQx5uYTIOUlfa3vbMfqk43uW4_AA/pub?gid=0&single=true&output=csv";
+
+const fechaEvento = new Date("2026-06-14T23:00:00").getTime();
+const fechaFinalRanking = new Date("2026-06-14T23:15:00").getTime();
+
 let puntosFirmes = {};
 let ultimaDataGanadores = "";
+
+function revisarReinicioEvento() {
+    if (localStorage.getItem("modoControlRally")) return;
+
+    const ahora = new Date().getTime();
+
+    if (ahora < fechaEvento) {
+        window.location.href = "index.html";
+        return;
+    }
+
+    if (ahora >= fechaEvento && ahora < fechaFinalRanking) {
+        window.location.href = "ranking.html";
+        return;
+    }
+}
 
 function csvToRows(csv) {
     return csv.trim().split(/\r?\n/).map(row => row.split(","));
@@ -69,6 +89,9 @@ function cargarGanadores() {
         console.log("Error ganadores:", error);
     });
 }
+
+revisarReinicioEvento();
+setInterval(revisarReinicioEvento, 3000);
 
 cargarGanadores();
 setInterval(cargarGanadores, 1000);
