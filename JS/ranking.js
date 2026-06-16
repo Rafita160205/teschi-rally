@@ -159,7 +159,7 @@ actualizarFechaHora();
 setInterval(actualizarFechaHora, 1000);
 
 // FINAL DEL RANKING
-const fechaFinal = new Date("2026-06-15T17:30:00").getTime();
+const fechaFinal = new Date("2026-06-19T13:30:00").getTime();
 
 function revisarFinalEvento() {
     // Si el control manual está forzando ranking,
